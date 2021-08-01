@@ -1,0 +1,46 @@
+.gradle/
+.idea/
+/build/
+/.gradle/
+/.history/
+!gradle/wrapper/gradle-wrapper.jar
+*recommenders/
+*sonarlint/
+
+*.tar
+temp/
+.idea
+.classpath
+.project
+.settings
+.log
+.csv
+bin/
+classes/
+version
+logs/
+/.metadata/
+versionFile.txt
+
+### STS ###
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+
+#### vscode settings ###
+.vscode/
+java.io.tmpdir/.lock
+
+#產生的excel
+tmp/*
+
+#gPRC auto genetation files
+/src/main/proto_gen/*

@@ -1,0 +1,16 @@
+/.metadata/
+/.recommenders/
+/RemoteSystemsTempFiles/
+.vscode
+
+.idea/
+.DS_Stroe
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*tfplan*
+*.tfstate
+*.tfstate.*
+.terraform.*

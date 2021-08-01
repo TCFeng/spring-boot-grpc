@@ -1,0 +1,108 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <property name="FILE_LOG_PATTERN"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%-5level][%thread][${PRIVATE_IP}][%logger{36}][%line] %msg%n"/>
+    <property name="FILE_LOG_PATTERN_BAK" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36}\[%line\] - %msg %n"/>
+    <property name="FILE_LOG_PATTERN_FOR_HUMAN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){cyan} %clr(%-5p) %clr(%-40.40logger{36}){cyan} L%line %clr(:){red} %msg%n"/>
+
+    <property name="LOG_ENCODING" value="UTF-8"/>
+
+    <springProfile name="dev">
+        <appender name="TIME_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <!-- daily rollover -->
+                <fileNamePattern>/var/log/web-api-server-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <maxFileSize>15MB</maxFileSize>
+                <maxHistory>90</maxHistory>
+                <totalSizeCap>200MB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+                <charset>${LOG_ENCODING}</charset>
+            </encoder>
+        </appender>
+        <appender name="CONSOLE"
+                  class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    ${FILE_LOG_PATTERN_FOR_HUMAN}
+                </Pattern>
+            </layout>
+        </appender>
+        <root level="DEBUG">
+            <appender-ref ref="TIME_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+    <springProfile name="prd">
+        <appender name="TIME_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <!-- daily rollover -->
+                <fileNamePattern>/var/log/web-api-server-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <maxFileSize>15MB</maxFileSize>
+                <maxHistory>90</maxHistory>
+                <totalSizeCap>200MB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+                <charset>${LOG_ENCODING}</charset>
+            </encoder>
+        </appender>
+        <appender name="CONSOLE"
+                  class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    ${FILE_LOG_PATTERN_FOR_HUMAN}
+                </Pattern>
+            </layout>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="TIME_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+    <springProfile name="qas">
+        <appender name="TIME_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <!-- daily rollover -->
+                <fileNamePattern>/var/log/web-api-server-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <maxFileSize>15MB</maxFileSize>
+                <maxHistory>90</maxHistory>
+                <totalSizeCap>200MB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+                <charset>${LOG_ENCODING}</charset>
+            </encoder>
+        </appender>
+        <appender name="CONSOLE"
+                  class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    ${FILE_LOG_PATTERN_FOR_HUMAN}
+                </Pattern>
+            </layout>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="TIME_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+    <springProfile name="rd">
+        <appender name="CONSOLE"
+                  class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    ${FILE_LOG_PATTERN_FOR_HUMAN}
+                </Pattern>
+            </layout>
+        </appender>
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+</configuration>
