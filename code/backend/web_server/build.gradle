@@ -16,6 +16,7 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 def grpcVersion = '1.36.0' // CURRENT_GRPC_VERSION
@@ -56,6 +57,14 @@ dependencies {
     // grpc
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
+
+    //spring grpc
+	implementation group: 'io.github.lognet', name: 'grpc-spring-boot-starter', version: '4.4.7'
+    implementation group: 'io.github.lognet', name: 'grpc-client-spring-boot-starter', version: '4.4.7'
+
+    // protobuf to java object
+    implementation 'com.github.BAData:protobuf-converter:1.1.5'
+
 
 
 }

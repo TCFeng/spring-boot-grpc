@@ -1,4 +1,4 @@
-package com.tcfeng.starter.app.common.vo;
+package com.tcfeng.grpc.app.common.vo;
 
 public interface VOBuilder<T> {
     T build();

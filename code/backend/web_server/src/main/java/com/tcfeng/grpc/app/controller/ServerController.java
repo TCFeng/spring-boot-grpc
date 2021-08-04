@@ -1,8 +1,8 @@
-package com.tcfeng.starter.app.controller;
+package com.tcfeng.grpc.app.controller;
  
-import com.tcfeng.starter.app.common.vo.ResponseVO;
-import com.tcfeng.starter.app.response.UserResponseVO;
-import com.tcfeng.starter.app.service.ServerService;
+import com.tcfeng.grpc.app.common.vo.ResponseVO;
+import com.tcfeng.grpc.app.response.ServerStatusResponseVO;
+import com.tcfeng.grpc.app.service.ServerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,10 +25,10 @@ public class ServerController {
     @Autowired
     private ServerService serverService;
  
-    @ApiOperation(value = "Get User info by ID")
+    @ApiOperation(value = "Get Server Status by ID")
     @ApiResponses({@ApiResponse(code = 422, message = "Error Test Example")})
     @GetMapping("/server/getStatusById")
-    public ResponseEntity<ResponseVO<UserResponseVO>> getStatusById(@RequestParam(required = true, value = "serverId") String serverId) {
+    public ResponseEntity<ResponseVO<ServerStatusResponseVO>> getStatusById(@RequestParam(required = true, value = "serverId") String serverId) {
         return new ResponseEntity<>(this.serverService.getStatusById(serverId), HttpStatus.OK);
     }
  

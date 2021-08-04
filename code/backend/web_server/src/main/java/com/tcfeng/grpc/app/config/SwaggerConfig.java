@@ -1,4 +1,4 @@
-package com.tcfeng.starter.app.config;
+package com.tcfeng.grpc.app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
