@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <h3 align="center">JAVA Spring boot starter</h3>
+  <h3 align="center">JAVA Spring boot grpc</h3>
 </p>
 
 
@@ -30,6 +30,7 @@
 * [JAVA](https://www.java.com/)
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [gRPC](https://https://grpc.io/)
+* [LogNet/grpc-spring-boot-starter](https://github.com/LogNet/grpc-spring-boot-starter)
 
 
 <!-- GETTING STARTED -->
@@ -57,19 +58,13 @@ gradlew build
 ```sh
 gradlew bootRun
 ```
-
-
-4. UT執行指令
+2. API 測試方法
 ```sh
-gradlew test jacocoTestReport
+curl -X GET \
+  'http://localhost:8080/grpc/server/getStatusById?serverId=S0001' \
+  -H 'cache-control: no-cache' \
+  -H 'postman-token: 00ef3dc0-e1dc-4f1c-b7e4-80da510fc67f'
 ```
-Jacoco Report會產製於 ./spring-boot-starter/code/backend/web_server/build/jacocoHtml/index.html
-
-5. 憑證產生
-```
-    keytool -genkey -alias localhost -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
-```
-* 關閉Https，請將application.properties的ssl相關設定移除
 
 <!-- CONTRIBUTING -->
 ## Contributing
